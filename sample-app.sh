@@ -1,12 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
-docker stop samplerunning
-docker rm samplerunning
-
-mkdir tempdir
-mkdir tempdir/templates
-mkdir tempdir/static
+if [[ ! -d "tempdir" ]]; then
+  mkdir tempdir
+  mkdir tempdir/templates
+  mkdir tempdir/static
+fi
 
 cp sample_app.py tempdir/.
 cp -r templates/* tempdir/templates/.
